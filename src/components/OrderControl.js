@@ -4,6 +4,7 @@ import NewOrderForm from "./NewOrderForm";
 import OrderDetail from "./OrderDetail";
 import EditOrderForm from "./EditOrderForm";
 import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
 class OrderControl extends React.Component {
   
@@ -130,6 +131,9 @@ class OrderControl extends React.Component {
   }
 }
 
+OrderControl.propTypes = {
+  mainOrderList: PropTypes.object
+};
 
 const mapStateToProps = state => {
   return {
