@@ -1,5 +1,5 @@
 const reducer = (state = {}, action) => {
-  const { name, origin, price, roast, bags, id } = action;
+  const { name, origin, price, roast, bags, amount, id } = action;
   switch (action.type) {
   case 'ADD_ORDER':
     return Object.assign({}, state, {
@@ -9,6 +9,7 @@ const reducer = (state = {}, action) => {
         price: price,
         roast: roast,
         bags: bags,
+        amount: amount,
         id: id
       }
     });

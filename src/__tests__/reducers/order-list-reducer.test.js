@@ -3,7 +3,7 @@ import orderListReducer from '../../reducers/order-list-reducer';
 describe('orderListReducer', () => {
 
   let action;
-  
+
   const currentState = {
     1: {
       name: 'Red Eye',
@@ -11,6 +11,7 @@ describe('orderListReducer', () => {
       price: 20,
       roast: 'dark',
       bags: 1,
+      amount: 130,
       id: 1
     }, 2: {
       name: 'Morning Blend',
@@ -18,6 +19,7 @@ describe('orderListReducer', () => {
       price: 15,
       roast: 'light',
       bags: 1,
+      amount: 260,
       id: 2
     }
   }
@@ -28,6 +30,7 @@ describe('orderListReducer', () => {
     price: 20,
     roast: 'dark',
     bags: 1,
+    amount: 130,
     id: 1
   };
 
@@ -36,7 +39,7 @@ describe('orderListReducer', () => {
   });
 
   test('#2) Should successfully add new order data to mainOrderList', () => {
-    const { name, origin, price, roast, bags, id } = orderData;
+    const { name, origin, price, roast, bags, amount, id } = orderData;
     action = {
       type: 'ADD_ORDER',
       name: name,
@@ -44,6 +47,7 @@ describe('orderListReducer', () => {
       price: price,
       roast: roast,
       bags: bags,
+      amount: amount,
       id: id
     };
 
@@ -54,6 +58,7 @@ describe('orderListReducer', () => {
         price: price,
         roast: roast,
         bags: bags,
+        amount: amount,
         id: id
       }
     });
@@ -71,13 +76,9 @@ describe('orderListReducer', () => {
         price: 15,
         roast: 'light',
         bags: 1,
+        amount: 260,
         id: 2
       }
     });
   });
-
-
-
-
-
 });
