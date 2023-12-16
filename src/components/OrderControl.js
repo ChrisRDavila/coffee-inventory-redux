@@ -3,6 +3,7 @@ import OrderList from "./OrderList";
 import NewOrderForm from "./NewOrderForm";
 import OrderDetail from "./OrderDetail";
 import EditOrderForm from "./EditOrderForm";
+import { connect } from 'react-redux';
 
 class OrderControl extends React.Component {
   
@@ -105,5 +106,7 @@ class OrderControl extends React.Component {
     );
   }
 }
+
+OrderControl = connect()(OrderControl);
 
 export default OrderControl;

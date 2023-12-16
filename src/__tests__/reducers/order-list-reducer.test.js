@@ -3,6 +3,7 @@ import orderListReducer from '../../reducers/order-list-reducer';
 describe('orderListReducer', () => {
 
   let action;
+  
   const currentState = {
     1: {
       name: 'Red Eye',
