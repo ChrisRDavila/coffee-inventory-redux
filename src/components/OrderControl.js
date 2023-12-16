@@ -130,6 +130,13 @@ class OrderControl extends React.Component {
   }
 }
 
-OrderControl = connect()(OrderControl);
+
+const mapStateToProps = state => {
+  return {
+    mainOrderList: state
+  }
+}
+
+OrderControl = connect(mapStateToProps)(OrderControl);
 
 export default OrderControl;
