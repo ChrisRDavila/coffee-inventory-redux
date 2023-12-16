@@ -11,7 +11,6 @@ class OrderControl extends React.Component {
       super(props);
       this.state = {
         formVisibleOnPage: false,
-        mainOrderList: [],
         selectedOrder: null,
         editing: false
       };
@@ -47,11 +46,23 @@ class OrderControl extends React.Component {
       }
 
     handleAddingNewOrderToList = (newOrder) => {
-      const newMainOrderList = this.state.mainOrderList.concat(newOrder);
-      this.setState({
-        mainOrderList: newMainOrderList,
-        formVisibleOnPage: false });
+        const { dispatch } = this.props;
+        const { name, origin, price, roast, bags, id } = newOrder;
+        const action = {
+          type: 'ADD_ORDER',
+          name: name,
+          origin: origin,
+          price: price,
+          roast: roast,
+          bags: bags,
+          id: id
+        }
+        dispatch(action);
+        this.setState({formVisibleOnPage: false});
+    
     }
+    
+  
 
     handleChangingSelectedOrder = (id) => {
       const selectedOrder = this.state.mainOrderList.filter(order => order.id === id)[0];
