@@ -46,19 +46,20 @@ class OrderControl extends React.Component {
       }
 
     handleAddingNewOrderToList = (newOrder) => {
-        const { dispatch } = this.props;
-        const { name, origin, price, roast, bags, id } = newOrder;
-        const action = {
-          type: 'ADD_ORDER',
-          name: name,
-          origin: origin,
-          price: price,
-          roast: roast,
-          bags: bags,
-          id: id
-        }
-        dispatch(action);
-        this.setState({formVisibleOnPage: false});
+      const { dispatch } = this.props;
+      const { id, name, origin, price, roast, bags } = newOrder;
+      const action = {
+        type: 'ADD_ORDER',
+        id: id,
+        name: name,
+        origin: origin,
+        price: price,
+        roast: roast,
+        bags: bags
+        
+      }
+      dispatch(action);
+      this.setState({formVisibleOnPage: false});
     
     }
     
@@ -70,19 +71,30 @@ class OrderControl extends React.Component {
     }
 
     handleDeletingOrder = (id) => {
-      const newMainOrderList = this.state.mainOrderList.filter(order => order.id !== id);
-      this.setState({
-        mainOrderList: newMainOrderList,
-        selectedOrder: null
-      });
+      const { dispatch } = this.props;
+      const action = {
+        type: 'DELETE_ORDER',
+        id: id
     }
+    dispatch(action);
+    this.setState({selectedOrder: null});
+  }
 
     handleEditingOrderInList = (orderToEdit) => {
-      const editedMainOrderList = this.state.mainOrderList
-        .filter(order => order.id !== this.state.selectedOrder.id)
-        .concat(orderToEdit);
+      const { dispatch } = this.props;
+        const { id, name, origin, price, roast, bags } = orderToEdit;
+        const action = {
+          type: 'ADD_ORDER',
+          id: id,
+          name: name,
+          origin: origin,
+          price: price,
+          roast: roast,
+          bags: bags
+          
+        }
+        dispatch(action);
       this.setState({
-        mainOrderList: editedMainOrderList,
         editing: false,
         selectedOrder: null
       });
