@@ -13,7 +13,8 @@ class OrderControl extends React.Component {
       this.state = {
         formVisibleOnPage: false,
         selectedOrder: null,
-        editing: false
+        editing: false,
+        listForAmount: []
       };
     }
 
@@ -40,7 +41,7 @@ class OrderControl extends React.Component {
       const selectedOrder = this.state.selectedOrder;
 
       if (selectedOrder.amount > 0) {
-        this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
+        this.setState({listForAmount: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
           .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
           selectedOrder: null});
         }

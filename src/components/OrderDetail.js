@@ -10,7 +10,7 @@ function OrderDetail(props){
   return (
     <React.Fragment>
       <h1>Inventory Detail</h1>
-      <h3>{order.name} - {order.origin}</h3>
+      <h3>{order.origin} {order.name}</h3>
       <p><em>Price per pound: ${order.price}</em></p>
       <p><em>Roast: {order.roast}</em></p>
       <p><em>In Stock: {order.amount}</em></p>
