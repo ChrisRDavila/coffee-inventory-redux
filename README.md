@@ -1,6 +1,6 @@
-# Coffee inventory
+# Coffee inventory redux
 
-#### A client side application showcasing full CRUD (Create, Read, Update, Delete) functionality in a React application
+#### A client side application showcasing full CRUD (Create, Read, Update, Delete) functionality in a React application that uses react for local state and redux for shared state
 
 #### By Christopher Davila
 
@@ -11,6 +11,7 @@
 * _Node.js_
 * _javascript_
 * _Html_
+* _Redux_
 
 ## Description
 * Application to sell and track inventory for a coffee company.  Client can create, read, update and delete entries, add 130 pound bags to the inventory and sell single pounds of coffee. The application will not allow consumer to buy coffee once amount of inventory is at 0.
