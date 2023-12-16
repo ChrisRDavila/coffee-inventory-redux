@@ -12,6 +12,10 @@ const reducer = (state = {}, action) => {
         id: id
       }
     });
+    case 'DELETE_ORDER':
+    let newState = { ...state };
+    delete newState[id];
+    return newState;
   default:
     return state;
   }
