@@ -4,7 +4,7 @@ describe('orderListReducer', () => {
 
   let action;
   const orderData = {
-    names: 'Red Eye',
+    name: 'Red Eye',
     origin: 'Columbian',
     price: 20,
     roast: 'dark',
@@ -17,10 +17,10 @@ describe('orderListReducer', () => {
   });
 
   test('#2) Should successfully add new order data to mainOrderList', () => {
-    const { names, origin, price, roast, bags, id } = orderData;
+    const { name, origin, price, roast, bags, id } = orderData;
     action = {
       type: 'ADD_ORDER',
-      names: names,
+      name: name,
       origin: origin,
       price: price,
       roast: roast,
@@ -30,7 +30,7 @@ describe('orderListReducer', () => {
 
     expect(orderListReducer({}, action)).toEqual({
       [id] : {
-        names: names,
+        name: name,
         origin: origin,
         price: price,
         roast: roast,
