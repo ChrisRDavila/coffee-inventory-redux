@@ -67,9 +67,14 @@ class OrderControl extends React.Component {
   
 
     handleChangingSelectedOrder = (id) => {
-      const selectedOrder = this.state.mainOrderList.filter(order => order.id === id)[0];
+      const selectedOrder = this.props.mainOrderList[id];
       this.setState({selectedOrder: selectedOrder});
     }
+
+    // handleChangingSelectedOrder = (id) => {
+    //   const selectedOrder = this.props.mainOrderList.filter(order => order.id === id)[0];
+    //   this.setState({selectedOrder: selectedOrder});
+    // }
 
     handleDeletingOrder = (id) => {
       const { dispatch } = this.props;
@@ -118,7 +123,7 @@ class OrderControl extends React.Component {
       currentlyVisibleState = <NewOrderForm onNewOrderCreation={this.handleAddingNewOrderToList}/>;
       buttonText = "Return to Inventory List";
     } else {
-      currentlyVisibleState = <OrderList orderList={this.state.mainOrderList} onOrderSelection={this.handleChangingSelectedOrder}/>;
+      currentlyVisibleState = <OrderList orderList={this.props.mainOrderList} onOrderSelection={this.handleChangingSelectedOrder}/>;
       buttonText = "Add Entry to Inventory";
     }
 
