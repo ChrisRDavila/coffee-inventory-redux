@@ -40,11 +40,23 @@ class OrderControl extends React.Component {
       const selectedOrder = this.state.selectedOrder;
 
       if (selectedOrder.amount > 0) {
-        this.setState({mainOrderList: this.state.mainOrderList.filter(order => order.id !== selectedOrder.id)
+        this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
           .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
           selectedOrder: null});
         }
       }
+
+    // handleBuyClick = () => {
+    //   const selectedOrder = this.state.selectedOrder;
+
+    //   if (selectedOrder.bags > 0) {
+    //     this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
+    //       .concat({...selectedOrder, bags: selectedOrder.bags - 1}),
+    //       selectedOrder: null});
+    //     }
+    //   }
+
+      //make sure works with this.props.mainOrderList
 
     handleAddingNewOrderToList = (newOrder) => {
       const { dispatch } = this.props;
