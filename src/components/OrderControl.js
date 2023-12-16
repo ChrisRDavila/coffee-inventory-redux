@@ -14,7 +14,6 @@ class OrderControl extends React.Component {
         formVisibleOnPage: false,
         selectedOrder: null,
         editing: false,
-        listForAmount: []
       };
     }
 
@@ -37,27 +36,6 @@ class OrderControl extends React.Component {
       this.setState({editing: true});
     }
 
-    // handleBuyClick = () => {
-    //   const selectedOrder = this.state.selectedOrder;
-
-    //   if (selectedOrder.amount > 0) {
-    //     this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
-    //       .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
-    //       selectedOrder: null});
-    //     }
-    //   }
-
-    // handleBuyClick = () => {
-    //   const selectedOrder = this.state.selectedOrder;
-
-    //   if (selectedOrder.amount > 0) {
-    //     this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
-    //       .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
-    //       selectedOrder: null});
-    //     }
-    //   }
-
-
     handleBuyClick = (buyBagOrder) => {
       const { dispatch } = this.props;
       const selectedOrder = this.state.selectedOrder;
@@ -75,8 +53,6 @@ class OrderControl extends React.Component {
       dispatch(action);
       this.setState({selectedOrder: null});
     }
-
-      //make sure works with this.props.mainOrderList
 
     handleAddingNewOrderToList = (newOrder) => {
       const { dispatch } = this.props;
@@ -103,12 +79,7 @@ class OrderControl extends React.Component {
       const selectedOrder = this.props.mainOrderList[id];
       this.setState({selectedOrder: selectedOrder});
     }
-
-    // handleChangingSelectedOrder = (id) => {
-    //   const selectedOrder = this.props.mainOrderList.filter(order => order.id === id)[0];
-    //   this.setState({selectedOrder: selectedOrder});
-    // }
-
+    
     handleDeletingOrder = (id) => {
       const { dispatch } = this.props;
       const action = {
