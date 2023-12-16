@@ -37,31 +37,40 @@ class OrderControl extends React.Component {
       this.setState({editing: true});
     }
 
-    handleBuyClick = () => {
-      const selectedOrder = this.state.selectedOrder;
-
-      if (selectedOrder.amount > 0) {
-        this.setState({listForAmount: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
-          .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
-          selectedOrder: null});
-        }
-      }
-
     // handleBuyClick = () => {
     //   const selectedOrder = this.state.selectedOrder;
 
-    //   if (selectedOrder.bags > 0) {
+    //   if (selectedOrder.amount > 0) {
     //     this.setState({mainOrderList: this.props.mainOrderList.filter(order => order.id !== selectedOrder.id)
-    //       .concat({...selectedOrder, bags: selectedOrder.bags - 1}),
+    //       .concat({...selectedOrder, amount: selectedOrder.amount - 1}),
     //       selectedOrder: null});
     //     }
     //   }
+
+
+    handleBuyClick = (buyBagOrder) => {
+      const { dispatch } = this.props;
+      const selectedOrder = this.state.selectedOrder;
+      const { id, name, origin, price, roast, bags, amount } = buyBagOrder;
+      const action = {
+        type: 'ADD_ORDER',
+        id: id,
+        name: selectedOrder.name,
+        origin: selectedOrder.origin,
+        price: selectedOrder.price,
+        roast: selectedOrder.roast,
+        bags: selectedOrder.bags,
+        amount: selectedOrder.amount - 1
+      }
+      dispatch(action);
+      this.setState({selectedOrder: null});
+    }
 
       //make sure works with this.props.mainOrderList
 
     handleAddingNewOrderToList = (newOrder) => {
       const { dispatch } = this.props;
-      const { id, name, origin, price, roast, bags } = newOrder;
+      const { id, name, origin, price, roast, bags, amount } = newOrder;
       const action = {
         type: 'ADD_ORDER',
         id: id,
@@ -69,7 +78,8 @@ class OrderControl extends React.Component {
         origin: origin,
         price: price,
         roast: roast,
-        bags: bags
+        bags: bags,
+        amount: amount
         
       }
       dispatch(action);
@@ -101,7 +111,7 @@ class OrderControl extends React.Component {
 
     handleEditingOrderInList = (orderToEdit) => {
       const { dispatch } = this.props;
-        const { id, name, origin, price, roast, bags } = orderToEdit;
+        const { id, name, origin, price, roast, bags, amount } = orderToEdit;
         const action = {
           type: 'ADD_ORDER',
           id: id,
@@ -109,7 +119,8 @@ class OrderControl extends React.Component {
           origin: origin,
           price: price,
           roast: roast,
-          bags: bags
+          bags: bags,
+          amount: amount
           
         }
         dispatch(action);
