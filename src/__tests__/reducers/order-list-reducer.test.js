@@ -3,6 +3,24 @@ import orderListReducer from '../../reducers/order-list-reducer';
 describe('orderListReducer', () => {
 
   let action;
+  const currentState = {
+    1: {
+      name: 'Red Eye',
+      origin: 'Columbian',
+      price: 20,
+      roast: 'dark',
+      bags: 1,
+      id: 1
+    }, 2: {
+      name: 'Morning Blend',
+      origin: 'Malaysian',
+      price: 15,
+      roast: 'light',
+      bags: 1,
+      id: 2
+    }
+  }
+
   const orderData = {
     name: 'Red Eye',
     origin: 'Columbian',
@@ -39,6 +57,26 @@ describe('orderListReducer', () => {
       }
     });
   });
+
+  test('#3) Should successfully delete a order', () => {
+    action = {
+      type: 'DELETE_ORDER',
+      id: 1
+    };
+    expect(orderListReducer(currentState, action)).toEqual({
+      2: {
+        name: 'Morning Blend',
+        origin: 'Malaysian',
+        price: 15,
+        roast: 'light',
+        bags: 1,
+        id: 2
+      }
+    });
+  });
+
+
+
 
 
 });
